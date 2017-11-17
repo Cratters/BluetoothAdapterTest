@@ -291,6 +291,31 @@ public class BluetoothChatService {
        }
     }
 
+    public void connect(BluetoothDevice device) {
+        Log.d(TAG, "connect to: " + device);
+
+        // Cancel any thread attempting to make a connection
+        if (mConnectThread != null) {
+            mConnectThread.cancel();
+            mConnectThread = null;
+        }
+
+        // Cancel any thread currently running a connection
+        if (mConnectedThread != null) {
+            mConnectedThread.cancel();
+            mConnectedThread = null;
+        }
+
+        // Start the thread to listen on a BluetoothServerSocket
+        if (mSecureAcceptThread == null) {
+            Log.d(TAG,"New Accept thread");
+            mSecureAcceptThread = new AcceptThread();
+            mSecureAcceptThread.start();
+        }
+
+
+    }
+
     /**
      * This thread runs while listening for incoming connections. It behaves
      * like a server-side client. It runs until a connection is accepted
@@ -308,8 +333,7 @@ public class BluetoothChatService {
             // Create a new listening server socket
             try {
 
-                    tmp = mAdapter.listenUsingRfcommWithServiceRecord(NAME_SECURE,
-                            MY_UUID_SECURE);
+                    tmp = mAdapter.listenUsingRfcommWithServiceRecord(NAME_SECURE, MY_UUID_SECURE);
                     Log.d(TAG,"Return RFComm= " +tmp);
 
             } catch (IOException e) {
@@ -536,4 +560,5 @@ public class BluetoothChatService {
             }
         }
     }
+
 }

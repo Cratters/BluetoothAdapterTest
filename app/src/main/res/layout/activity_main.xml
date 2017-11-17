@@ -11,7 +11,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/scan"
+            android:id="@+id/Search_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -22,19 +22,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/discoverable"
+            android:id="@+id/Discover_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_weight="1"
             android:background="@android:drawable/editbox_dropdown_light_frame"
             android:text="discoverable"
-            app:layout_constraintBaseline_toBaselineOf="@+id/scan"
-            app:layout_constraintLeft_toRightOf="@+id/scan"
-            app:layout_constraintRight_toLeftOf="@+id/edit" />
+            app:layout_constraintBaseline_toBaselineOf="@+id/Search_btn"
+            app:layout_constraintLeft_toRightOf="@+id/Search_btn"
+            app:layout_constraintRight_toLeftOf="@+id/Edit_btn" />
 
         <Button
-            android:id="@+id/edit"
+            android:id="@+id/Edit_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -45,10 +45,9 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/listView"
+        android:id="@+id/BT_ListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="16dp"
-         />
+        android:layout_marginTop="16dp" />
 
 </LinearLayout>
